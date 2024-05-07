@@ -8,8 +8,8 @@
   - 웹 디자인 및 사용자 경험(UI/UX)에 대한 이해가 필요합니다.
   - 다양한 웹 프레임워크(React, Angular, Vue.js 등)에 대한 경험이 요구될 수 있습니다.
 
-  <img src="https://cdn.inflearn.com/public/files/posts/7c12e891-21c6-4e86-a765-d04dd3c378da/front-career-react-0.png" width="200" height="200"/>
 
+![frontend](https://cdn.inflearn.com/public/files/posts/7c12e891-21c6-4e86-a765-d04dd3c378da/front-career-react-0.png)
 
 
 ### Back-end
@@ -17,16 +17,17 @@
 - **기술 및 역할**:
   - 서버 사이드 프로그래밍 언어(Java, Python, Node.js 등)에 대한 이해와 숙련도가 필요합니다.
   - 데이터베이스와의 상호작용을 위한 경험이 필요합니다.
-  
-<img src="https://storage.googleapis.com/static.fastcampus.co.kr/prod/uploads/202305/064546-821/group-1000004192.png" width="200" height="150"/>
+#### Front-end와 Back-end의 상호작용
+API를 통해서 서로 상호작용을 합니다. 상호작용이 필요한 이유는 프론트엔드는 사용자와의 직접적인 상호작용을 담당하고, 백엔드는 이러한 상호작용을 가능하게 하는 데이터 처리와 서버 로직을 구현하기 때문입니다.
 
+![backend](https://storage.googleapis.com/static.fastcampus.co.kr/prod/uploads/202305/064546-821/group-1000004192.png)
 ### iOS
 - **설명**: iOS 개발은 Apple의 iOS 플랫폼을 위한 애플리케이션을 개발하는 것을 의미합니다.
 - **기술 및 역할**:
   - Swift 또는 Objective-C 언어에 대한 숙련도가 필요합니다.
   - iOS SDK 및 Cocoa Touch 프레임워크에 대한 이해가 필요합니다.
   - Xcode 및 Interface Builder와 같은 개발 도구에 익숙해야 합니다.
- <img src="https://www.macworld.com/wp-content/uploads/2024/04/ios-17-logo-on-an-iPhone.jpg?quality=50&strip=all&w=1024" width="200" height="150"/>
+ ![ios](https://www.macworld.com/wp-content/uploads/2024/04/ios-17-logo-on-an-iPhone.jpg?quality=50&strip=all&w=1024)
 ### Android
 - **설명**: 안드로이드 개발은 구글의 안드로이드 플랫폼을 위한 애플리케이션을 개발하는 것을 의미합니다.
 - **기술 및 역할**:
@@ -41,7 +42,8 @@
   - CI/CD(Continuous Integration/Continuous Deployment) 파이프라인 구축 및 관리에 대한 경험이 필요합니다.
   - 클라우드 인프라스트럭처의 구축과 관리를 위한 기술 스택에 대한 이해가 필요합니다.
   - 운영 및 모니터링 도구의 사용 경험이 요구됩니다.
-<img src="https://www.opsnow.com/wp-content/uploads/2023/07/AI-DevOps_001.png" width="200" height="150"/>
+
+![dev](https://www.opsnow.com/wp-content/uploads/2023/07/AI-DevOps_001.png)
 ### Design
 - **설명**: 디자인은 제품 또는 서비스의 시각적 및 사용자 경험을 디자인하는 것을 의미합니다.
 - **기술 및 역할**:
