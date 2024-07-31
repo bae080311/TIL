@@ -226,3 +226,13 @@
 - 데이터가 변경되면 이 이름을 바꾸어서 변경함(Hash를 다시 생성)
 - 진짜 단순하게 ETag만 보내서 같으면 유지, 다르면 다시 받기!
   ![검증헤더추가1](/HTTP%20웹%20기본지식/HTTP%20Header/first.png)
+
+## Cache-Control
+
+- 캐시 지시어
+- Cashe-Control:max-age
+  - 캐시 유효 시간, 초 단위
+- Cache-Control: no-cache
+  - 데이터는 캐시해도 되지만, 항상 원(origin)서버에 검증하고 사용
+- Cacee-Control: no-store
+  - 데이터에 민간한 정보가 있으므로 저장하면 안됨(메모리에서 사용하고 최대한 빨리 삭제)
