@@ -26,6 +26,7 @@ Cross-Origin Resource Sharing의 약자로 웹에서 다른 주소로 접근할 
 
 - **인증 정보를 포함한 요청을 보낼 때**의 경우는 프론트에서도 처리해줘야 할 한 가지가 있다. 바로 withCredentials 옵션을 추가 하기
 - mkcert로 로컬 서버를 HTTPS로 만들어 **HTTPS에서 HTTP로 리소스 요청을 할 때** 같은 경우를 해결할 수 있다
+- **출처가 다른 도메인 또는 포트로 리소스 요청을 할 때** https://cors-anywhere/herokuapp.com 같이 남이 만든 프록시 서버 이용하기
 - 그냥 다 무시하고 싶을 때는 크롬에서 CORS를 다 무시할 수 있는 방법이 있다 (보안이 매우 낮으므로 개발 목적에서만 사용하자)
   1. 원하는 위치에 빈 디렉토리를 하나 만들어준다 (mkdir chrome-no-cors)
   2. 다음의 명령어를 실행한다 (open -na 'Google Chrome' --args --user-data-dir=${path} --disable-web-security)
