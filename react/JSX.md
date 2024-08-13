@@ -22,6 +22,6 @@ function App() {
 
 // 바벨이 JS 형태의 코드로 변환한 예시
 function App() {
-  return React.createElement("h1", null, "Hello, GodDaeHee!");
+  return React.createElement("h1", "Hello!");
 }
 ```
