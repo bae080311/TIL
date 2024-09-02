@@ -7,14 +7,14 @@
 
 ex)
 
-```
-    a:hover {
-        color: white;
-    }
-    a:active {
-        color: black;
-    }
-    a:focus {
-        color: tomato;
-    }
+```css
+a:hover {
+  color: white;
+}
+a:active {
+  color: black;
+}
+a:focus {
+  color: tomato;
+}
 ```
