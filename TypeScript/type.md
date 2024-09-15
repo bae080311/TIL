@@ -9,6 +9,8 @@
 - enum
 - null
 - undefined
+- union
+- intersetion
 
 ```js
 let age: number = 30;
@@ -57,4 +59,45 @@ myOs = Os.window;
 
 let a:null=null;
 let a:undefined=undefined;
+
+// union type
+
+interface Car{
+  name: "car";
+  color: string;
+  start(): void;
+}
+
+interface Mobile {
+  name: "mobile";
+  color: string;
+  call(): void;
+}
+
+function Getgift(gift: Car | Mobile){
+  console.log(gift.color);
+  if (gift.name==="Car"){
+    gift.start();
+  }else{
+    gift.call();
+  }
+}
+//intersection Type
+
+interface Car{
+  name: string;
+  start(): void;
+}
+interface Toy{
+  name: string;
+  color: string;
+  price: number;
+}
+
+const toyCar: Toy & car ={
+  name: "타요",
+  start(){},
+  color: "blue",
+  price: 10000
+}
 ```
