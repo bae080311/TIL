@@ -2,6 +2,8 @@
 
 연속적으로 발생하는 이벤트(scroll, input 등등)를 하나로 처리하는 방식입니다(마지막 이벤트만 발생)
 
+![debounce](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F994614365C17654319)
+
 debounce 구현, 사용 예시
 
 ```js
