@@ -38,14 +38,14 @@ yarn install styled-components@latest
 ```js
 import styled from "styled-components"; // library 추가해주기
 
-const Btn = styled.div`
+const Btn = styled.button`
   background-color: tomato;
   color: white;
   font-weight: 600;
 `;
 
 export default function background() {
-  return <Btn>입력해라</Btn>;
+  return <Btn>클릭해라</Btn>;
 }
 ```
 
