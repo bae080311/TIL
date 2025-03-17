@@ -1,0 +1,35 @@
+# scope란?
+
+스코프 (scope)는 '범위'라는 뜻을 가지고 있습니다
+JavaScript에서 스코프는 변수의 유효범위를 의미합니다
+
+## scope 규칙
+
+1. 내부에서 정의된 변수는 외부 스코프에서 접근이 불가능합니다
+2. 외부에서 정의된 변수는 내부 스코프에서 접근이 가능합니다
+3. 함수 내부에서 정의된 변수는 함수 외부에서 접근이 불가능합니다
+
+### 전역 예시
+
+```javascript
+let global = "전역";
+
+function Global() {
+  console.log(global); // 접근 가능
+}
+
+Global();
+console.log(globalVar); // 접근 가능
+```
+
+### 지역 예시
+
+```javascript
+function localS() {
+  let local = "지역";
+  console.log(local); // 접근 가능
+}
+
+local();
+console.log(local); // error
+```
