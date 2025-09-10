@@ -1,0 +1,17 @@
+# Vue template
+
+### text 삽입
+
+```Vue
+<script>
+const msg = "야미";
+const html = "<span style="color: red">이것은 빨간색이어야 합니다.</span>";
+<script>
+
+<span>메시지: {{ msg }} 머스태시 문법</span>
+
+
+<span v-text="msg"></span>
+
+<span v-html="html"></span>
+```
