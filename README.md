@@ -1,9 +1,7 @@
 # TIL
 
 오늘 한 공부를 정리해서 올리는 곳입니다!!
-
-아래 목차는 `scripts/generate-readme.js`로 자동 생성되며, main 브랜치에 push될 때마다 GitHub Actions가 자동으로 갱신합니다.
-
+열심히 하겠습니다
 ## 📚 Contents
 
 <!-- TOC:START -->
