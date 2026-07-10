@@ -19,13 +19,23 @@
 
 - [Controller](./BackEnd/Controller.md)
 - [DI](./BackEnd/DI.md)
+- [DTO vs DAO](./BackEnd/DTO%20vs%20DAO.md)
+- [entity](./BackEnd/entity.md)
 - [IOC](./BackEnd/IOC.md)
 - [ORM](./BackEnd/ORM.md)
+- [Repository](./BackEnd/Repository.md)
+- [service](./BackEnd/service.md)
 - **architecture**
   - [hexagonal](./BackEnd/architecture/hexagonal.md)
   - [layered](./BackEnd/architecture/layered.md)
 - **nest**
   - [nest](./BackEnd/nest/nest.md)
+
+### CS
+
+- [SOLID](./CS/SOLID.md)
+- [객체지향](./CS/%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5.md)
+- [절차지향](./CS/%EC%A0%88%EC%B0%A8%EC%A7%80%ED%96%A5.md)
 
 ### DB
 
@@ -83,7 +93,6 @@
   - [repeat](./FrontEnd/JavaScript/repeat.md)
   - [replace](./FrontEnd/JavaScript/replace.md)
   - [scope](./FrontEnd/JavaScript/scope.md)
-  - [scope](./FrontEnd/JavaScript/scope.mdx)
   - [setInterval](./FrontEnd/JavaScript/setInterval.md)
   - [setTimeout](./FrontEnd/JavaScript/setTimeout.md)
   - [slice](./FrontEnd/JavaScript/slice.md)
@@ -114,6 +123,7 @@
   - [component-props](./FrontEnd/react/component-props.md)
   - [dependencyArray](./FrontEnd/react/dependencyArray.md)
   - [JSX](./FrontEnd/react/JSX.md)
+  - [react](./FrontEnd/react/react.md)
   - [renderPhase_commitPhase](./FrontEnd/react/renderPhase_commitPhase.md)
   - [virtual-DOM](./FrontEnd/react/virtual-DOM.md)
   - **Hooks**
@@ -126,8 +136,6 @@
     - [useReducer](./FrontEnd/react/Hooks/useReducer.md)
     - [useRef](./FrontEnd/react/Hooks/useRef.md)
     - [useState](./FrontEnd/react/Hooks/useState.md)
-  - **react**
-    - [react](./FrontEnd/react/react/react.md)
 - **TypeScript**
   - [generic](./FrontEnd/TypeScript/generic.md)
   - [interface](./FrontEnd/TypeScript/interface.md)
@@ -182,6 +190,10 @@
   - [Security Misconfiguration](./security/2025/Security%20Misconfiguration.md)
   - [Software or Data Integrity Failures](./security/2025/Software%20or%20Data%20Integrity%20Failures.md)
   - [Software_Supply Chain Failures](./security/2025/Software_Supply%20Chain%20Failures.md)
+
+### SystemDesign
+
+- [Scale-Up vs Scale-Out](./SystemDesign/Scale-Up%20vs%20Scale-Out.md)
 
 ### Tools
 
