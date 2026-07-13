@@ -19,6 +19,8 @@
 - [DI](./BackEnd/DI.md)
 - [DTO vs DAO](./BackEnd/DTO%20vs%20DAO.md)
 - [entity](./BackEnd/entity.md)
+- [express](./BackEnd/express.md)
+- [fastify](./BackEnd/fastify.md)
 - [IOC](./BackEnd/IOC.md)
 - [ORM](./BackEnd/ORM.md)
 - [Repository](./BackEnd/Repository.md)
@@ -27,6 +29,7 @@
   - [hexagonal](./BackEnd/architecture/hexagonal.md)
   - [layered](./BackEnd/architecture/layered.md)
 - **nest**
+  - [lifecycle](./BackEnd/nest/lifecycle.md)
   - [nest](./BackEnd/nest/nest.md)
 
 ### CS
