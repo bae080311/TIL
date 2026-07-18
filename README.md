@@ -31,6 +31,7 @@
 - **nest**
   - [lifecycle](./BackEnd/nest/lifecycle.md)
   - [nest](./BackEnd/nest/nest.md)
+  - [provider](./BackEnd/nest/provider.md)
 
 ### CS
 
