@@ -1,0 +1,56 @@
+> ## DNS란?
+- 사람이 읽는 도메인 이름을 IP 주소로 바꿔주는 시스템
+- 계층적 구조로 되어 있음 
+
+# Route 53이란?
+- AWS의 완전 관리형 DNS 서비스
+- 사용자가 직접 DNS 레코드를 수정 가능
+- Domain Register 역할도 함
+- AWS에서 유일하게 100% SLA를 보장하는 서비스
+- 53은 전통적인 DNS 포트번호
+
+## 레코드란?
+- 도메인을 어디로 연결할지 정의하는 규칙 
+- 도메인명, 타입, 값, 라우팅 정책, TTL
+**주요 레코드 타입**
+- A: 도메인명 → IPv4 주소
+- AAAA: 도메인명 → IPv6 주소
+- CNAME: 도메인명 → 다른 도메인명
+- NS: 존의 네임서버 지정
+## Hosted Zone
+- Public: 인터넷 트래픽 라우팅용
+- Private: VPC 내부 트래픽 라우팅용
+- 영역당 월 $0.50
+## TTL
+- 높으면: Route 53 트래픽↓, 하지만 레코드 갱신이 늦게 반영됨
+- 낮으면: 트래픽↑(비용↑), 레코드 갱신이 빠르게 반영됨
+- Alias 레코드는 TTL 설정 불가 (자동)
+
+## cname vs Alias 
+| 구분 | CNAME | Alias |
+|---|---|---|
+| 루트 도메인(example.com) | 불가 | 가능 |
+| 서브도메인(www.example.com) | 가능 | 가능 |
+| 비용 | - | 무료 |
+| 헬스체크 연동 | - | 지원 |
+| 연결 대상 | 아무 호스트명 | ELB, CloudFront, S3, API Gateway 등 AWS 리소스만 |
+## 라우팅 정책 (Routing Policy)
+DNS 쿼리에 "어떻게 응답할지" 정하는 것
+- Simple: 단일/여러 리소스 지정, 클라이언트가 임의 선택
+- Weighted: 레코드별 가중치(%)로 트래픽 분배 (가중치 0 = 트래픽 차단)
+- Latency-based: 지연시간 가장 짧은 리전으로 연결
+- Failover: Active-Passive 장애조치
+- Geolocation: 사용자의 실제 물리적 위치 기준
+- Geoproximity: 지리적 위치 + bias 값으로 트래픽 영역 조절 (Traffic Flow 필요)
+- IP-based: 클라이언트 IP 대역(CIDR) 기준
+- Multi-Value: 여러 값 반환, 최대 8개의 정상 레코드 (ELB 대체 아님)
+
+## Health Check
+- 공인(public) 리소스만 가능
+- 전 세계 ~15개 체커가 확인, 18% 이상이 정상이면 Healthy
+- Calculated: 여러 헬스체크를 AND/OR/NOT으로 조합 (최대 256개)
+- Private 리소스는 직접 체크 불가 → CloudWatch 알람 경유해서 체크
+
+## Domain Registrar != DNS Service
+도메인은 GoDaddy 등에서 사고, DNS 관리는 Route 53으로 할 수 있음
+방법: Route 53에 Public Hosted Zone 생성 → 등록업체에서 NS 레코드를 Route 53 네임서버로 변경
