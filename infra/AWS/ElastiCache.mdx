@@ -1,0 +1,108 @@
+# ElastiCache
+- RDS가 관계형 DB를 관리해주는 것처럼, ElastiCache는 Redis / Memcached를 관리해줍니다
+- 캐시는 인메모리 데이터베이스로 성능이 높고 지연 시간이 짧음
+- 읽기 위주의 워크로드에서 DB 부하를 줄여줌
+- 애플리케이션을 무상태(stateless)로 만들 수 있음
+- AWS가 OS 유지관리/패치, 최적화, 설정, 구성, 모니터링, 장애 복구, 백업을 담당
+- 단점: 애플리케이션 코드를 상당히 많이 고쳐야 함 (캐시를 조회하는 로직을 직접 넣어야 하므로)
+
+## Solution Architecture - DB Cache
+- 앱이 먼저 ElastiCache에 질의
+    - 캐시 히트: 그대로 응답 (RDS까지 안 감)
+    - 캐시 미스: RDS에서 읽어와 응답하고, 그 결과를 캐시에 저장
+- DB 부하가 줄어들고, 자주 쓰는 데이터는 캐시에 남음
+- **캐시 무효화(invalidation) 전략이 반드시 필요** — 최신 데이터만 캐시에 있도록 보장해야 함
+
+## Solution Architecture - User Session Store
+- 사용자가 로그인하면 세션 데이터를 ElastiCache에 저장
+- 다른 인스턴스로 요청이 가도 캐시에서 세션을 찾아오므로 로그인 상태가 유지됨
+- 앱을 무상태로 만드는 대표적인 패턴
+
+## Redis vs Memcached
+- Redis
+    - 자동 페일오버가 포함된 다중 AZ
+    - 고가용성을 위한 읽기 전용 복제본
+    - AOF 지속성(persistence)으로 데이터 내구성 확보
+    - 백업 및 복원 기능
+    - Set, Sorted Set 자료구조 지원
+- Memcached
+    - 여러 노드에 데이터를 분할(파티셔닝/샤딩)
+    - 고가용성(복제) 없음
+    - 비영구적 캐시 — 데이터 유실 가능
+    - 백업 및 복원 없음
+    - 멀티 스레드 구조
+
+## Cache Security
+- ElastiCache는 **IAM 인증을 지원하지 않음**
+    - IAM 정책은 AWS API 레벨(클러스터 생성/삭제 등)에만 적용됨
+- Redis AUTH
+    - 클러스터를 만들 때 비밀번호/토큰을 설정
+    - 보안 그룹으로 네트워크 접근 제어
+    - 전송 중 암호화(SSL) 지원
+- Memcached
+    - SASL 기반 인증 지원
+
+## Patterns for ElastiCache
+### Lazy Loading (= Cache-Aside)
+- 읽은 데이터를 전부 캐시에 담아두는 방식. 데이터가 오래됐을(stale) 수 있음
+- 장점
+    - 요청된 데이터만 캐시하므로 메모리를 낭비하지 않음
+    - 노드 장애가 치명적이지 않음 (지연이 늘어날 뿐)
+- 단점
+    - 캐시 미스 시 네트워크 왕복이 3번 발생해 지연이 큼
+    - 데이터가 오래될 수 있음
+
+```python
+# Lazy Loading
+def get_user(user_id):
+    record = cache.get(user_id)
+    if record is None:
+        record = db.query("SELECT * FROM users WHERE id = %s", user_id)
+        cache.set(user_id, record)
+    return record
+```
+
+### Write-Through
+- DB에 쓸 때 캐시도 같이 갱신
+- 장점
+    - 캐시 데이터가 절대 오래되지 않음, 읽기가 빠름
+    - 쓰기 시점에 갱신되므로 사용자가 대기하는 쪽이 쓰기임 (읽기 지연 없음)
+- 단점
+    - 쓰기 지연(write penalty)이 생김 — 쓰기마다 2번 작업
+    - 캐시 미스가 여전히 많음. 쓰이지 않은 데이터는 캐시에 없기 때문
+    - 쓰기만 하고 읽지 않는 데이터까지 캐시에 쌓임(캐시 낭비) → TTL로 완화
+
+```python
+# Write-Through
+def save_user(user_id, record):
+    db.query("UPDATE users SET ... WHERE id = %s", user_id)
+    cache.set(user_id, record)
+```
+
+### Cache Evictions and TTL
+- 캐시에서 데이터가 사라지는 3가지 방식
+    - 명시적으로 삭제
+    - 메모리가 꽉 차서 LRU(Least Recently Used)로 밀려남
+    - TTL(Time-To-Live) 만료
+- TTL은 몇 초부터 며칠까지 데이터 성격에 따라 설정 (리더보드, 댓글, 활동 스트림 등)
+- 캐시 축출(eviction)이 너무 많이 일어난다면 → 캐시 스케일 업/아웃 신호
+
+## Redis Use Case - Gaming Leaderboard
+- Sorted Set을 쓰면 원소의 유일성과 순서가 자동으로 보장됨
+- 새 점수가 들어올 때마다 실시간으로 순위가 갱신됨
+- 모든 Redis 인스턴스가 동일한 리더보드를 보게 됨
+
+## 캐시를 도입할지 판단하는 기준
+- 안전성(Safety): 데이터가 조금 오래돼도(eventual consistency) 괜찮은가?
+- 효과(Effectiveness)
+    - 좋은 경우: 천천히 변하는 데이터, 필요한 키 종류가 적음
+    - 안티패턴: 빠르게 변하는 데이터, 키 공간 전체가 필요함
+- 자료구조 적합성: 키-값 형태나 집계 결과를 캐싱하기 좋은가?
+
+## Amazon MemoryDB for Redis
+- Redis 호환 + 내구성 있는(durable) 인메모리 데이터베이스
+- 초당 1.6억 건 이상의 초고속 처리량
+- 다중 AZ 트랜잭션 로그로 내구성 확보
+- 10GB ~ 100TB까지 원활하게 스케일링
+- 사용 사례: 웹/모바일 앱, 온라인 게임, 미디어 스트리밍
+- ElastiCache와의 차이: ElastiCache는 "캐시", MemoryDB는 "DB로 써도 되는 인메모리"
