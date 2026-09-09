@@ -9,10 +9,6 @@
 
 - [RAG](./AI/RAG.md)
 
-### AWS
-
-- [EC2](./AWS/EC2.mdx)
-
 ### BackEnd
 
 - [Controller](./BackEnd/Controller.md)
@@ -185,6 +181,17 @@
 - [웹 브라우저 요청 흐름](./HTTP%20%EC%9B%B9%20%EA%B8%B0%EB%B3%B8%EC%A7%80%EC%8B%9D/%EC%9B%B9%20%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%80%20%EC%9A%94%EC%B2%AD%20%ED%9D%90%EB%A6%84.md)
 - [클라이언트 서버 구조](./HTTP%20%EC%9B%B9%20%EA%B8%B0%EB%B3%B8%EC%A7%80%EC%8B%9D/%ED%81%B4%EB%9D%BC%EC%9D%B4%EC%96%B8%ED%8A%B8%20%EC%84%9C%EB%B2%84%20%EA%B5%AC%EC%A1%B0.md)
 - [클라이언트에서 서버로 데이터 전송](./HTTP%20%EC%9B%B9%20%EA%B8%B0%EB%B3%B8%EC%A7%80%EC%8B%9D/%ED%81%B4%EB%9D%BC%EC%9D%B4%EC%96%B8%ED%8A%B8%EC%97%90%EC%84%9C%20%EC%84%9C%EB%B2%84%EB%A1%9C%20%EB%8D%B0%EC%9D%B4%ED%84%B0%20%EC%A0%84%EC%86%A1.md)
+
+### infra
+
+- [onpremise](./infra/onpremise.md)
+- **AWS**
+  - [Aurora](./infra/AWS/Aurora.mdx)
+  - [EC2](./infra/AWS/EC2.mdx)
+  - [ElastiCache](./infra/AWS/ElastiCache.mdx)
+  - [IAM](./infra/AWS/IAM.mdx)
+  - [RDS](./infra/AWS/RDS.mdx)
+  - [Route53](./infra/AWS/Route53.mdx)
 
 ### PM
 
