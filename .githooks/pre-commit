@@ -1,0 +1,2 @@
+#!/bin/sh
+node scripts/generate-readme.js && git add README.md
