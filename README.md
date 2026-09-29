@@ -31,6 +31,8 @@
 
 ### CS
 
+- [CPU](./CS/CPU.md)
+- [RAM](./CS/RAM.md)
 - [SOLID](./CS/SOLID.md)
 - [객체지향](./CS/%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5.md)
 - [절차지향](./CS/%EC%A0%88%EC%B0%A8%EC%A7%80%ED%96%A5.md)
@@ -50,6 +52,7 @@
 ### Flutter
 
 - [AOT vs JIT](./Flutter/AOT%20vs%20JIT.md)
+- [async](./Flutter/async.md)
 - [dart](./Flutter/dart.md)
 
 ### FrontEnd
