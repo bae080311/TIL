@@ -222,6 +222,7 @@
 ### SystemDesign
 
 - [Scale-Up vs Scale-Out](./SystemDesign/Scale-Up%20vs%20Scale-Out.md)
+- [SPOF](./SystemDesign/SPOF.md)
 
 ### Tools
 
