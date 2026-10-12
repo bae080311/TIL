@@ -191,6 +191,7 @@
 ### infra
 
 - [onpremise](./infra/onpremise.md)
+- [SRE](./infra/SRE.md)
 - **AWS**
   - [Aurora](./infra/AWS/Aurora.mdx)
   - [EC2](./infra/AWS/EC2.mdx)
